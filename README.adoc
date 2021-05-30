@@ -1,0 +1,9 @@
+= dating
+
+Dating-App für Schulprojekt der Kreuzburg.
+
+== Strunktur
+
+* link:app/README.adoc[app] die Anwendung (in PHP)
+* link:setup/README.adoc[setup] Skripte zum Aufsetzten der Datenbank, etc.
+
