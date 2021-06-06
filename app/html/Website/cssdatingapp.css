@@ -1,0 +1,44 @@
+body { 
+		background-image: url(pattern.png);
+		}
+	
+h1 	{	text-align: center;
+		font-family: "Helvetica";
+		font-weight: "normal";
+		text-decoration:underline;}
+
+table {	font-family: "Verdana";
+		border-style: outset;
+		border-width:50px;
+		border-color: #837e93;
+		background-color: #837e93}
+		
+th { 	color: #837e93;
+		border-style: solid;
+		border-color: #eeeee4;
+		border-width: 10px;
+		background-color: #eeeee4;}
+		
+td { 	color:#837e93;
+		border-style: solid;
+		border-color: #eeeee4;
+		border-width: 10px;
+		background-color: #eeeee4;}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+		
+#myTable {
+    transform:rotate(270deg);
+}
