@@ -2,6 +2,8 @@
 session_start();
 include "mysql_connect.php";
 $Username = $_POST['Username'];
+setcookie("Username", $Username, time()+3600, "", "", true);
+include "session_page1.php";
 $result = mysqli_query($db, "SELECT Passwort FROM Nutzer WHERE Username='$Username' "); //sucht in Tabelle Nutzer nach Passwort zum eingegebenen Username
 
 if (mysqli_num_rows($result) == 1) {    //prüft, ob der angegebene Username vorhanden ist

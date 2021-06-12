@@ -2,16 +2,18 @@
 <html>
 
     <?php
-        $credentials = parse_ini_file("../credentials.ini", true);
+        include "mysql_connect.php"; 
+        //$credentials = parse_ini_file("../credentials.ini", true);
         //print_r($credentials);
-        $db = $credentials["db_bplaced"];
+        //$db = $credentials["db_bplaced"];
 
-        $dbaddress = $db["host"];
+        /*$dbaddress = $db["host"];
         $user = $db["user"];
         $pwd = $db["passwort"];
         //$pwd = file_get_contents(".pwd");
-        $dbname = $db["dbname"];
-        $db = mysqli_connect($dbaddress,$user,$pwd,$dbname);
+        $dbname = $db["dbname"];*/
+        //$db = mysqli_connect($dbaddress,$user,$pwd,$dbname);
+        //$db = mysqli_connect($db_server, $db_user, $db_pass,$db_name); // Verbindung zur DB aufbauen
 
         if (!$db) {
         die ('Could not connect: ' . mysql_error());

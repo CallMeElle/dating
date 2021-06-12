@@ -4,6 +4,10 @@
     $Username=$_POST["Username"];
     $Passwort=$_POST["Passwort"];
     
+    setcookie("Username", $Username, time()+3600, "", "", true);
+    include "session.php";
+    create_session();
+    
     include "mysql_connect.php";
     $query= "INSERT INTO Nutzer (Nutzernummer, Username, Passwort) values ('$Nutzernummer','$Username','$Passwort')";
     $result=mysqli_query($db,$query);
