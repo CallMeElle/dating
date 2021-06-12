@@ -3,16 +3,20 @@
 
 <?php
 
+    include_once "helper.php";
+
     //Starting the session
     function create_session(){
         $_SESSION['name'] = $_COOKIE["Username"];
 
         if(!isset($_COOKIE["Username"])){
+            printJSDebug("Kein Username Cookie gefunden");
             return false;
         }
             
         if(isset($_COOKIE["Session_ID"])){
-                return false;
+            printJSDebug("Session_ID Cookie schon gesetzt");
+            return false;
         } 
             
         $id = session_create_id();	
@@ -21,6 +25,7 @@
         session_start();  
 
         session_commit();
+        printJSDebug("Session_ID Cookie erstellt");
 
         return true;
     }
@@ -38,7 +43,7 @@
         $Username = $_COOKIE["Username"];
         $Session_ID = $_COOKIE["Session_ID"];
         
-        include "mysql_connect.php";
+        include_once "mysql_connect.php";
         
         $escapedSessionID = mysqli_real_escape_string($db, $Session_ID);
         $query1 = "SELECT Nutzernummer, Erstellungsdatum FROM Session WHERE Session_ID == $escapedSessionID; ";

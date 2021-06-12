@@ -1,22 +1,21 @@
-<?php
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
-    $Nutzernummer=$_POST["Nutzernummer"];
-    $Username=$_POST["Username"];
-    $Passwort=$_POST["Passwort"];
+<?php
     
-    setcookie("Username", $Username, time()+3600, "", "", true);
-    include "session.php";
-    create_session();
+    include_once("account_management.php");
     
-    include "mysql_connect.php";
-    $query= "INSERT INTO Nutzer (Nutzernummer, Username, Passwort) values ('$Nutzernummer','$Username','$Passwort')";
-    $result=mysqli_query($db,$query);
-    include('head.php');
-    if($result){
-        echo 'Eintrag erfolgreich!';
+    include_once('head.php');
+
+    $Username=$_POST["register_Username"];
+    $Passwort=$_POST["register_Passwort"];
+    
+    $err = register($Username,$Passwort);
+    
+    if($err){
+        echo "Fehler bei der Anmeldung";
     }
-    else{
-        echo'Fehler bei der Anfrage!';
-    }
-    include('foot.php');
+    
+    
+    include_once('foot.php');
+    
 ?>
