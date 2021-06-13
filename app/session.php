@@ -4,6 +4,7 @@
 <?php
 
     include_once "helper.php";
+    include_once "mysql_connect.php";
 
     //Starting the session
     function create_session(){
@@ -43,7 +44,7 @@
         $Username = $_COOKIE["Username"];
         $Session_ID = $_COOKIE["Session_ID"];
         
-        include_once "mysql_connect.php";
+        $db = connectDB();
         
         $escapedSessionID = mysqli_real_escape_string($db, $Session_ID);
         $query1 = "SELECT Nutzernummer, Erstellungsdatum FROM Session WHERE Session_ID == $escapedSessionID; ";
@@ -55,6 +56,8 @@
         
         $query2 = "SELECT Username FROM Benutzer WHERE Nutzernummer == $UserID; ";
         $Username2 = mysqli_query($db,$query2);
+        
+        mysqli_close($db);
         
         if($Username2 != $Username){
             return false;

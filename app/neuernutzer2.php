@@ -6,10 +6,11 @@
     
     include_once('head.php');
 
-    $Username=$_POST["register_Username"];
-    $Passwort=$_POST["register_Passwort"];
+    $Username = $_POST["register_Username"];
+    $Passwort = $_POST["register_Passwort"];
+    $Email = $_POST["register_Email"];
     
-    $err = register($Username,$Passwort);
+    $err = register($Username, $Passwort, $Email);
     
     if($err){
         echo "Fehler bei der Anmeldung";

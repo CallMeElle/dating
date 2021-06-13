@@ -2,7 +2,8 @@
 <html>
 
     <?php
-        include "mysql_connect.php"; 
+        include_once "mysql_connect.php";
+        $db = connectDB();
         //$credentials = parse_ini_file("../credentials.ini", true);
         //print_r($credentials);
         //$db = $credentials["db_bplaced"];

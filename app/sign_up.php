@@ -12,6 +12,8 @@
                 <form action="neuernutzer2.php" method="post" >
                     <tr><td align=left>Username:</td><td align=right><input type="Text" name="register_Username" value="" size="12" ></td></tr>
                     <tr><td align=left>Passwort (minderstens 5):</td><td align=right><input type="Text" name="register_Passwort" value="" size="12" minlength="5"></td></tr>
+                    <tr><td align=left>Email:</td><td align=right><input type="Text" name="register_Email" value="" size="12" minlength="5"></td></tr>
+
 
                     <tr><td align=left colspan=2><br><input type="Submit" name="Submit" value="Jetzt registrieren">&nbsp
                     <input type="reset">
