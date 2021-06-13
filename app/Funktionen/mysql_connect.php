@@ -2,7 +2,7 @@
     
     function connectDB(){
         mysqli_report(MYSQLI_REPORT_ALL & ~MYSQLI_REPORT_INDEX);
-        $credentials = parse_ini_file("../credentials.ini", true);
+        $credentials = parse_ini_file("../../credentials.ini", true);
         $db = $credentials["db_bplaced"];
 
         $db_server = $db["host"];      	// DB-Server
