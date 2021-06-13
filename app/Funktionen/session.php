@@ -32,6 +32,7 @@
     }
     
     //check if the user is logged in
+    //returns true if user is logged in
     function check_session(){
         if(!isset($_COOKIE["Username"])){
             return false;

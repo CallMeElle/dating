@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "mysql_connect.php";
+include "Funktionen/mysql_connect.php";
 $Username = $_POST['Username'];
 setcookie("Username", $Username, time()+3600, "", "", true);
 include "session_page1.php";

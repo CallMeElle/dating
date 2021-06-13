@@ -2,7 +2,7 @@
 
 <?php
     
-    include_once("account_management.php");
+    include_once "Funktionen/account_management.php";
     
     $head_file = file_get_contents("html/head.html");
     echo $head_file;
@@ -21,7 +21,7 @@
                 $err = register($Username, $Passwort, $Email);
                 
                 if($err){
-                    echo "Fehler bei der Anmeldung";
+                    echo "Fehler bei der Registrierung";
                 }else{
                     echo "Neuer nutzer erfolgreich erstellt";
                 }

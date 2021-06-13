@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "mysql_connect.php";
+include "Funktionen/mysql_connect.php";
 $Username = $_POST['Username'];
 $result = mysqli_query($db, "SELECT Passwort FROM Nutzer WHERE Username='Hansdampf' ");
 $rpasswort = mysqli_fetch_array($result);

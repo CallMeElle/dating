@@ -3,7 +3,8 @@
 <?php
 
     include_once "mysql_connect.php";
-        
+    include_once "helper.php";
+
     //rückgabewert true, wenn fehler oder nutzer existiert
     function does_user_exist ($Username){
         if(!isset($Username)){
@@ -13,7 +14,6 @@
     
         printJSDebug("checking if User $Username exists");
     
-        include_once "helper.php";
         
         try{
             $db = connectDB();
