@@ -202,5 +202,11 @@
         */
         return true;
     }
+
+    function logout(){
+        end_session();
+        setcookie("Username", $Username, time()-3600, "", "", true);
+        return true;
+    }
 ?>
 

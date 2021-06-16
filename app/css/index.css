@@ -19,10 +19,10 @@ body {
     justify-content: flex-end;
 }
 
-.login-field{
-    visibility: visible;
+.hide{
+    visibility: hidden;
 }
 
-.logout-field{
-    visibility: hidden;
+.show{
+    visibility: visible;
 }

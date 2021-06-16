@@ -3,7 +3,7 @@
     function connectDB(){
         mysqli_report(MYSQLI_REPORT_ALL & ~MYSQLI_REPORT_INDEX);
         $credentials = parse_ini_file(dirname(__FILE__) . "/../../credentials.ini", true);
-        $db_ini = $credentials["db_bplaced"];
+        $db_ini = $credentials["db_local"];
 
         $db_server = $db_ini["host"];      	// DB-Server
         $db_user = $db_ini["user"]; 			// DB- User in einer Variable speichern

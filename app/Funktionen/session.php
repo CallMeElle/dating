@@ -81,8 +81,16 @@
             return false;
         }
         */
+
+        //switch visibility for logout button here @todo
         
         return true;
+    }
+
+    function end_session(){
+        session_destroy();
+        setcookie("Session_ID", $id, time()-3600, "", "", true);  /* delete cookie by setting expire date on an hour before */
+        printJSDebug("Session closed.");
     }
     
 ?>
