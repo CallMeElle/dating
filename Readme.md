@@ -32,6 +32,21 @@ unmittelbar vor Verbindung (zum Daten abfragen oder um etwas neu hinzuzufügen:
 $db = connectDB();
 ```
 
+Der Zugriff funktioniert am Besten so (Beispielhaft mit `NUtzernummer, Passwort und Username`:
+
+```php
+$stmt1 = mysqli_prepare($db, "SELECT Nutzernummer, Passwort FROM Nutzer WHERE Username = ?");
+            
+            /* bind parameters for markers */
+            mysqli_stmt_bind_param($stmt1, "s", $Username);
+
+            /* execute query */
+            mysqli_stmt_execute($stmt1);
+            
+            mysqli_stmt_bind_result($stmt1, $Nutzernummer, $pwd);
+            mysqli_stmt_fetch($stmt1);
+```
+
 Nach Zugriff, den Zugang direkt wieder schließen:
 
 ```php

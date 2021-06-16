@@ -169,6 +169,7 @@
         }
 
         printJSDebug("Creating the session");
+        $_COOKIE["Username"] = $Username; 
         setcookie("Username", $Username, time()+3600, "", "", true);
         create_session();
         $SessionID = $_COOKIE["Session_ID"];

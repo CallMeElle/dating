@@ -22,8 +22,10 @@
                 if(!$err){
                     echo "Fehler beim Login";
                 }else{
-                    echo "Login erfolgreich";
+                    header("Location: profil.php");
+                    die();
                 }
+
             ?>    
             
         </div>

@@ -47,7 +47,7 @@
         
         $db = connectDB();
 
-        $stmt1 = mysqli_prepare($db, "SELECT `Nutzernummer` FROM Session WHERE `Session_ID` = `?` ");
+        $stmt1 = mysqli_prepare($db, "SELECT Nutzernummer FROM Session WHERE Session_ID = ?");
             
         /* bind parameters for markers */
         mysqli_stmt_bind_param($stmt1, "s", $Session_ID);
@@ -56,21 +56,31 @@
         mysqli_stmt_execute($stmt1);
         
         //ist($User_ID, $Date) = mysqli_stmt_get_result($stmt1);
-        $User_ID = mysqli_stmt_get_result($stmt1);
+        mysqli_stmt_bind_result($stmt1, $User_ID);
+        mysqli_stmt_fetch($stmt1);
+
             
         if(!isset($User_ID)){
             return false;
         }
         
-        $query2 = "SELECT Username FROM Benutzer WHERE Nutzernummer == $User_ID; ";
-        $Username2 = mysqli_query($db,$query2);
+        $stmt2 = mysqli_prepare($db, "SELECT Username FROM Benutzer WHERE Nutzernummer = $User_ID; ");
+            
+        /* bind parameters for markers */
+        mysqli_stmt_bind_param($stmt2, "s", $Username);
+
+        /* execute query */
+        mysqli_stmt_execute($stmt2);
         
+        mysqli_stmt_bind_result($stmt2, $Nutzernummer);
+        mysqli_stmt_fetch($stmt2);
+
         mysqli_close($db);
-        
+        /*
         if($Username2 != $Username){
             return false;
         }
-        
+        */
         
         return true;
     }
