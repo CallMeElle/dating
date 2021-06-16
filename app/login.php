@@ -1,30 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 <?php
-session_start();
-include "Funktionen/mysql_connect.php";
-$Username = $_POST['Username'];
-setcookie("Username", $Username, time()+3600, "", "", true);
-include "session_page1.php";
-$result = mysqli_query($db, "SELECT Passwort FROM Nutzer WHERE Username='$Username' "); //sucht in Tabelle Nutzer nach Passwort zum eingegebenen Username
-
-if (mysqli_num_rows($result) == 1) {    //prüft, ob der angegebene Username vorhanden ist
-while ($zeile = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-
-$passwortkorrekt = $zeile['Passwort'];}
+    
+    include_once "Funktionen/account_management.php";
+    
+    $head_file = file_get_contents("html/head.html");
+    echo $head_file;
+?>
 
 
- 
+<html>
+    <body>
+        <div class="main">
+
+            <?php
+                $Username = $_POST["Username"];
+                $Passwort = $_POST["Passwort"];
+               
+                $err = login($Username, $Passwort);
+                
+                if(!$err){
+                    echo "Fehler beim Login";
+                }else{
+                    echo "Login erfolgreich";
+                }
+            ?>    
+            
+        </div>
+    </body>
+</html>
   
-if ( isset($_POST['Username']) 
-		 and isset($_POST['Passwort'])
-		 and $passwortkorrekt == $_POST['Passwort'] //ueberprüft, ob eingegebenes Passwort mit Passwort aus dB übereinstimmt
-		)
-	{
-		$_SESSION['Username'] = $_POST['Username'];
-                $_SESSION['Passwort'] = $_POST['Passwort'];
-                echo 'Du bist jetzt eingeloggt';
-	}
- else { echo 'Dein Passwort stimmt leider nicht';
-       } 
-}
-else { echo 'Dieser Username ist leider nicht vorhanden';}
+<?php  
+    $foot_file = file_get_contents("html/foot.html");
+    echo $foot_file;
+    
 ?>

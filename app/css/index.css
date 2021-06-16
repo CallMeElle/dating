@@ -18,3 +18,11 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+
+.login-field{
+    visibility: visible;
+}
+
+.logout-field{
+    visibility: hidden;
+}

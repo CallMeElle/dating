@@ -46,16 +46,23 @@
         $Session_ID = $_COOKIE["Session_ID"];
         
         $db = connectDB();
+
+        $stmt1 = mysqli_prepare($db, "SELECT `Nutzernummer` FROM Session WHERE `Session_ID` = `?` ");
+            
+        /* bind parameters for markers */
+        mysqli_stmt_bind_param($stmt1, "s", $Session_ID);
+
+        /* execute query */
+        mysqli_stmt_execute($stmt1);
         
-        $escapedSessionID = mysqli_real_escape_string($db, $Session_ID);
-        $query1 = "SELECT Nutzernummer, Erstellungsdatum FROM Session WHERE Session_ID == $escapedSessionID; ";
-        list($UserID, $Date) = mysqli_query($db,$query1);
-        
-        if(!isset($UserID)){
+        //ist($User_ID, $Date) = mysqli_stmt_get_result($stmt1);
+        $User_ID = mysqli_stmt_get_result($stmt1);
+            
+        if(!isset($User_ID)){
             return false;
         }
         
-        $query2 = "SELECT Username FROM Benutzer WHERE Nutzernummer == $UserID; ";
+        $query2 = "SELECT Username FROM Benutzer WHERE Nutzernummer == $User_ID; ";
         $Username2 = mysqli_query($db,$query2);
         
         mysqli_close($db);
