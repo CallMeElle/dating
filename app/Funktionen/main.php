@@ -1,9 +1,9 @@
 <?php
   include_once "mysql_connect.php";
   function getLogin() {
-    if (session_id() == '') { // || !isset($_SESSION['username'])) {
-        //header("Location: index.php");
-        //die();
+    if (session_id() == '' || !isset($_SESSION['username'])) {
+        header("Location: index.php");
+        die();
     }
     return $_SESSION['username'];
   }

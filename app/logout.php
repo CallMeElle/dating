@@ -1,7 +1,8 @@
 <?php
-    include_once "Funktionen/account_management.php";
-    logout();
-
-    header("Location: index.php");
-    die();
+  session_start();
+  setcookie(session_name(), "", time() - 3600);
+  session_destroy();
+  session_write_close();
+  header("Location: index.php");
+  die();
 ?>

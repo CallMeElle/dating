@@ -1,12 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <?php
+  include_once "Funktionen/main.php";
+  session_start();
+  $login = getLogin();
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  echo file_get_contents("html/header.html");
+  <body>
+    <?php
     $head_file = file_get_contents("html/head.html");
     echo $head_file;
-?>
-
-<html>
-    <body>
+    echo "Eingeloggt als Nutzer: " . $login;
+?>    
         <div class="main">
             <table border=0>
                 <form action="profil_register.php" method="post" >
@@ -24,10 +29,9 @@
                 </form>
             </table>
         </div>
-    </body>
-</html>
-
-<?php
+        <?php
     $foot_file = file_get_contents("html/foot.html");
     echo $foot_file;
 ?>
+    </body>
+</html>
