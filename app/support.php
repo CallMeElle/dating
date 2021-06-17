@@ -25,7 +25,7 @@
             <tbody>
               <?php
                   $supportTickets = getSupportTickets();
-                  foreach($ticket as $supportTickets) {
+                  foreach($supportTickets as $ticket) {
                     ?><tr>
                   <td><?php echo $ticket->Tickernummer ?></td>
                   <td><?php echo $ticket->Fragedatum ?></td>
