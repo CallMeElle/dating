@@ -1,15 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <?php
+    error_reporting(E_ERROR | E_PARSE);
     include_once "Funktionen/account_management.php";
-?>
-
-
-<html>
-    <body>
-        <div class="main">
-
-            <?php
                 $Username = $_POST["Username"];
                 $Passwort = $_POST["Passwort"];
                
@@ -22,14 +13,4 @@
                     die();
                 }
 
-            ?>    
-            
-        </div>
-    </body>
-</html>
-  
-<?php  
-    $foot_file = file_get_contents("html/foot.html");
-    echo $foot_file;
-    
 ?>
