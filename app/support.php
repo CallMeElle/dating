@@ -3,7 +3,7 @@
   session_start();
   $login = getLogin();
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <?php
   echo file_get_contents("html/header.html");
@@ -13,7 +13,7 @@
     echo file_get_contents("html/leiste.html");
     ?>    
         <div class="main">
-          <table border="1">
+          <table class="datatable">
             <thead>
               <tr>
                 <td>ID</td>
@@ -25,7 +25,7 @@
               <?php
                   $supportTickets = getSupportTickets();
                   foreach($supportTickets as $ticket) {
-                    ?><tr>
+                    ?><tr onClick="window.location = 'supportDetails.php?ticketnummer=<?php echo $ticket->Ticketnummer ?>'">
                   <td><?php echo $ticket->Ticketnummer ?></td>
                   <td><?php echo $ticket->Fragedatum ?></td>
                   <td><?php echo $ticket->Titel ?></td>

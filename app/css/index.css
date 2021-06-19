@@ -18,3 +18,26 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+td {
+    text-align: left;
+}
+input {
+    width: 90%;
+}
+textarea {
+    width: 90%;
+    height: 150px;
+    resize: none;
+}
+.datatable td {
+    border-bottom: 1px solid #000000;
+}
+.datatable tr {
+    background-color: #ffffff;
+}
+.datatable tr:nth-child(even) {
+    background-color: #adadad;
+}
+.datatable tr:hover {
+    background-color: #041cf1d0;
+}

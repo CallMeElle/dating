@@ -23,6 +23,25 @@
   }
   
   }
+  function getSupportTicket($ticketnummer) {
+    try {
+        $db = connectDB();
+        $stmt1 = mysqli_prepare($db, "SELECT * FROM Support WHERE Nutzernummer = ? AND Ticketnummer = ?");
+        
+        mysqli_stmt_bind_param($stmt1, "ss", $_SESSION['nutzernummer'], $ticketnummer);
+        mysqli_stmt_execute($stmt1);
+        
+        $support = array();
+        $result = $stmt1->get_result();
+        $ticket = $result->fetch_object();
+        $stmt1->close();
+        mysqli_close($db);
+        return $ticket;
+    }catch(mysqli_sql_exception $e){
+        echo $e;
+        mysqli_close($db);
+    }
+  }
   function getSupportTickets() {
     try {
         $db = connectDB();
