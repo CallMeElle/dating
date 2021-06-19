@@ -7,6 +7,7 @@
     }
     return $_SESSION['username'];
   }
+
   function createTicket($titel, $frage) {
     $login = getLogin();
     try {
@@ -89,5 +90,5 @@
         echo $e;
         mysqli_close($db);
     }
-}
+  }
 ?>

@@ -18,9 +18,11 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+
 td {
     text-align: left;
 }
+
 table input {
     width: 90%;
 }

@@ -18,7 +18,7 @@ if ( isset($_POST['Username'])
                 $_SESSION['Passwort'] = $_POST['Passwort'];
                 echo 'Du bist jetzt eingeloggt';
 	}
- else { echo 'Hat net geklappt';
+ else { echo 'Hat nicht geklappt';
         echo $num_rows;
         echo $bitte;
         echo $Username;

@@ -28,8 +28,8 @@
         </div>
 
         <?php
-    $foot_file = file_get_contents("html/foot.html");
-    echo $foot_file;
-?>
+            $foot_file = file_get_contents("html/foot.html");
+            echo $foot_file;
+        ?>
     </body>
 </html>

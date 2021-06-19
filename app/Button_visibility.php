@@ -5,7 +5,9 @@
         <input type="submit" value="Login"/>
     </form>
 </div>
+
 <div id="button"><button onClick="show()">Show Screen</button></div>
+
 <script>
 
     function show() {
