@@ -10,11 +10,10 @@
   ?>
   <body>
     <?php
-    echo file_get_contents("html/head.html");
-    echo "Nutzernummer: " . $_SESSION['nutzernummer'];
+    echo file_get_contents("html/leiste.html");
     ?>    
         <div class="main">
-          <table>
+          <table border="1">
             <thead>
               <tr>
                 <td>ID</td>
@@ -27,7 +26,7 @@
                   $supportTickets = getSupportTickets();
                   foreach($supportTickets as $ticket) {
                     ?><tr>
-                  <td><?php echo $ticket->Tickernummer ?></td>
+                  <td><?php echo $ticket->Ticketnummer ?></td>
                   <td><?php echo $ticket->Fragedatum ?></td>
                   <td><?php echo $ticket->Titel ?></td>
                 </tr>
@@ -37,6 +36,16 @@
             </tbody>
           </table>
         </div>
+        <div class="main">
+
+        <form action="neuesSupportticket.php" method="post" class="show" >
+                <input type="Text" name="titel" value="" size="12" placeholder="Titel" autocomplete="on" />
+                <input type="Text" name="frage" value="" size="12" minlength="5" placeholder="Frage" autocomplete="on" />
+      
+                <input type="Submit" name="Submit" value="Erstellen"/>
+            </form>
+        </div>
+
         <?php
     $foot_file = file_get_contents("html/foot.html");
     echo $foot_file;

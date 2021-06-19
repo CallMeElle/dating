@@ -1,7 +1,18 @@
-    <div class="topbar">
-            <div class="logout-field">
-                <form action="logout.php" method="post" >
-                    <input type="Submit" name="Submit" value="Log Out">
+<html>
+    <head>
+        <title> Dating </title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="css/signed_out.css" media="screen"/>
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="login-field">
+                <form action="login.php" method="post" >
+                    <input type="Text" name="Username" value="" size="12" placeholder="Nutzername" />
+                    <input type="Text" name="Passwort" value="" size="12" minlength="5" placeholder="Passwort" />
+                    <input type="Submit" name="Submit" value="Login">
                 </form>
             </div>
-    </div>
+        </div>
+    </body>
+</html>

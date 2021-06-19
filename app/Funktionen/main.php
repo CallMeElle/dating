@@ -7,6 +7,22 @@
     }
     return $_SESSION['username'];
   }
+  function createTicket($titel, $frage) {
+    $login = getLogin();
+    try {
+      $db = connectDB();
+      $stmt1 = mysqli_prepare($db, "INSERT INTO Support (Nutzernummer, Titel, Frage, Fragedatum) VALUES (?, ?, ?, NOW())");
+      mysqli_stmt_bind_param($stmt1, "sss", $_SESSION['nutzernummer'], $titel, $frage);
+      mysqli_stmt_execute($stmt1);
+      mysqli_close($db);
+      return true;
+  }catch(mysqli_sql_exception $e){
+      echo $e;
+      mysqli_close($db);
+      return false;
+  }
+  
+  }
   function getSupportTickets() {
     try {
         $db = connectDB();
@@ -19,7 +35,6 @@
         $result = $stmt1->get_result();
         // echo "Debug: " . $_SESSION['nutzernummer'] . " Ende.";
         while($row = $result->fetch_object()) {
-            echo "Debug: " . $row;
           $support[$row->Ticketnummer] = $row;
         }
         $stmt1->close();
