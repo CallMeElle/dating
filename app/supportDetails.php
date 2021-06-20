@@ -10,8 +10,9 @@
   ?>
   <body>
     <?php
-    echo file_get_contents("html/leiste.html");
-    $ticket = getSupportTicket($_GET['ticketnummer']);
+    
+        include_once "html/leiste.php";
+        $ticket = getSupportTicket($_GET['ticketnummer']);
     ?>    
         <div class="main">
             <form class="show" >
