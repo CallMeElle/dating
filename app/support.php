@@ -1,7 +1,6 @@
 <?php
   include_once "Funktionen/main.php";
-  session_start();
-  $login = getLogin();
+  ensureLogin();
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
   <body>
 
     <?php
-    echo file_get_contents("html/leiste.html");
+      include_once "html/leiste.php";
     ?>  
 
         <div class="main">

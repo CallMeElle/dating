@@ -18,11 +18,23 @@ body {
     display: flex;
     justify-content: flex-end;
 }
-
+.navigation{
+    margin-left: 5%; 
+    margin-top: 0%;
+    margin-right: auto;
+    float: top;
+    align-self: top;
+    align-items: left;
+    display: flex;
+    justify-content: flex-end;
+}
+.headline{
+    margin: 10%;
+    margin-right: 20%;
+}
 td {
     text-align: left;
 }
-
 table input {
     width: 90%;
 }

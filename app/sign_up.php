@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <?php
-    $head_file = file_get_contents("html/head.html");
-    echo $head_file;
+    echo file_get_contents("html/header.html");
+    echo file_get_contents("html/leiste.html");
 ?>
 
 <html>

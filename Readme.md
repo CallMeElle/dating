@@ -5,10 +5,17 @@
 Bitte genau so in jedes Dokument übernehmen. Der andere php code wird dazwischen geschrieben.
 
 ```php
-<?php
-    $head_file = file_get_contents("html/head.html");
-    echo $head_file;
-?>
+<html>
+    <?php
+        echo file_get_contents("html/header.html");
+    ?>
+    <body>
+        
+        <?php
+            include_once "html/leiste.php";
+        ?> 
+        
+        //...weiteres html
 ```
 
 ```php
@@ -38,7 +45,7 @@ Der Zugriff funktioniert am Besten so (Beispielhaft mit `NUtzernummer, Passwort 
 $stmt1 = mysqli_prepare($db, "SELECT Nutzernummer, Passwort FROM Nutzer WHERE Username = ?");
             
             /* bind parameters for markers */
-            mysqli_stmt_bind_param($stmt1, "s", $Username);
+            mysqli_stmt_bind_param($stmt1, "s", $Username); //falls mehrere Parameter in Variable gebunden werden müssen: ($stmt1, "sss", $Username, $anderes, $drittes);
 
             /* execute query */
             mysqli_stmt_execute($stmt1);
@@ -55,48 +62,14 @@ mysqli_close($db);
 
 ## Session
 
-Um zu überprüfen ob der Nutzer angemeldet ist (und auf den Teil der Website Zugriff haben sollte)
-
-Am Angang des Dokuments (nach php-tag):
-
-```php
-include_once "Funktionen/session.php";
-
-```
-
-So wird die Funktion aufgerufen:
+Um zu überprüfen, dass der Nutzer schon eingeloggt ist:
+(Das muss vor jeglichem html code eingefügt werden, sonst funktioniert es nicht.)
 
 ```php
-
-check_session()
-```
- Wenn der Nutzer angemeldet ist wird `true` zurückgegeben.
- 
-## Account management
-
-Für Account management (login, signup und überprüfen, ob nutzer existiert) muss diese Datei eingebunden werden:
-
-```php
-include_once "Funktionen/account_management.php";
-```
-
-Login und signup sind voneinander getrennt.
-
-Signup funktioniert über die gleichnamige php-Seite. 
-Dafür wird diese Funktion aufgerufen:
-
-```php
-register($Username, $Passwort, $Email)
-```
-Falls ein Fehler auftritt, wird `true` zurückgegeben
-
-
-Um zu überprüfen, ob ein Username schon in der Datenbank existiert, gibt es diese Funktion:
-
-```php
-does_user_exist ($Username)
-```
-Falls es den Usernamen schon in der Datenbank gibt oder ein Fehler auftritt, wird `true` zurückgegeben.
+<?php
+    include_once "Funktionen/main.php";
+    ensureLogin();
+?>
 
 
 

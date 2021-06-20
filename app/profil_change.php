@@ -1,9 +1,10 @@
 <?php  
     include_once "Funktionen/main.php";
-    ensureLogin();
-
-	$db = connectDB();
+    session_start();
+    $login = getLogin();
+   include_once "Funktionen/main.php";
     
+    $db = connectDB();
 ?>
 
 
@@ -28,17 +29,17 @@
 
                     $Nutzernummer = $zeile['Nutzernummer'];}}
 
-                $Vorname = $_POST["register_Vorname"];
-                $Nachname = $_POST["register_Nachname"];
-                $Geburtsdatum = $_POST["register_Geburtsadatum"];
-		$Geschlecht = $_POST["register_Geschlecht"];
-                $Groesse = $_POST["register_Groesse"];
-                $Kinder = $_POST["register_Kinder"];
                 
-                $query= "INSERT INTO Profil (Nutzernummer,Vorname,Nachname,Geburtsdatum,Geschlecht,Groesse,Kinder) values ('$Nutzernummer','$Vorname','$Nachname','$Geburtsdatum','$Geschlecht','$Groesse','$Kinder')";
-                mysqli_query($db,$query);}
+                $Vorname = $_POST["change_Vorname"];
+                $Nachname = $_POST["change_Nachname"];
+                $Geburtsdatum = $_POST["change_Geburtsadatum"];
+		        $Geschlecht = $_POST["change_Geschlecht"];
+                $Groesse = $_POST["change_Groesse"];
+                $Kinder = $_POST["change_Kinder"];
                 
-                echo" Profil wurde gespeichert!";                               }
+                $query= "UPDATE Profil SET Vorname ='$Vorname', Nachname ='$Nachname', Geburtsdatum ='$Geburtsdatum', Geschlecht = '$Geschlecht', Groesse = '$Groesse', kinder = '$Kinder' WHERE Nutzernummer ='$Nutzernummer'";
+                mysqli_query($db,$query);
+                echo" Profil wurde angepasst!";                               }
                 
             ?>    
             

@@ -1,11 +1,15 @@
 <?php
   include_once "mysql_connect.php";
-  function getLogin() {
+  function getLogin(){
+    return $_SESSION['username'];
+  }
+
+  function ensureLogin() {
+    session_start();
     if (session_id() == '' || !isset($_SESSION['username'])) {
         header("Location: index.php");
         die();
     }
-    return $_SESSION['username'];
   }
 
   function createTicket($titel, $frage) {
@@ -81,14 +85,70 @@
         mysqli_stmt_bind_result($stmt1, $nutzernummer, $pwd);
         mysqli_stmt_fetch($stmt1);
         mysqli_close($db);
-        
-        if(!$pwd || $password != $pwd) {
-            return -1;
+    
+        if(password_verify($password, $pwd)){
+          return -1;
         }
+
         return $nutzernummer;
+
     }catch(mysqli_sql_exception $e){
         echo $e;
         mysqli_close($db);
     }
   }
+
+      //rückgabewert true, wenn ein fehler passiert ist
+      function register($Username, $Passwort, $Email){
+
+        if(!isset($Username)){
+            printJSDebug ("Username nicht gesetzt");
+            return true;
+        }
+
+        if(!isset($Passwort)){
+            printJSDebug ("Passwort nicht gesetzt");
+            return true;
+        }
+
+        if(!isset($Email)){
+            printJSDebug ("Email nicht gesetzt");
+            return true;
+        }
+
+        $passwort_hash = password_hash($Password, PASSWORD_DEFAULT);
+        //printJSDebug("Creating the session");
+        try{
+
+            $db = connectDB();
+            $stmt = mysqli_prepare($db, "INSERT INTO Nutzer (Username, Passwort, Email) VALUES (?, ?, ?)");
+
+            /* bind parameters for markers */
+            mysqli_stmt_bind_param($stmt, "sss", $Username, $passwort_hash, $Email);
+
+            /* execute query */
+            mysqli_stmt_execute($stmt);
+
+            //checking if the user was created
+            if(mysqli_stmt_affected_rows($stmt) != 1){
+                printJSDebug("Nutzer nicht zur Datenbank hinzugefügt");
+
+                mysqli_close($db);
+                return true;
+            }
+
+            mysqli_close($db);
+
+            //printJSDebug("Neuer Nutzer erstellt");
+
+        }catch(mysqli_sql_exception $e){
+            echo $e;
+            mysqli_close($db);
+            return true;
+            //printJSDebug("$e");
+        }
+
+        return false;
+    }
+
 ?>

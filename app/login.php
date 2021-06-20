@@ -8,7 +8,7 @@
         $_SESSION['nutzernummer'] = $nutzernummer;
         session_commit();
         //header("Location: profil.php");
-        header("Location: support.php");
+        header("Location: home.php");
         die();
     } else {
       echo "Fehler beim Login";

@@ -1,18 +1,21 @@
 <html>
-    <head>
-        <title> Dating </title>
-        <link rel="stylesheet" type="text/css" href="css/index.css" media="screen"/>
-        <link rel="stylesheet" type="text/css" href="css/signed_out.css" media="screen"/>
-    </head>
     <body>
         <div class="topbar">
+            <div class="navigation">
+                
+                <a href="sign_up.php">Registrierung</a>
+                <span style="padding-left:20px">
+               
+            </div>
             <div class="login-field">
-                <form action="login.php" method="post" >
-                    <input type="Text" name="Username" value="" size="12" placeholder="Nutzername" />
-                    <input type="Text" name="Passwort" value="" size="12" minlength="5" placeholder="Passwort" />
+                <form action="login.php" method="post" class="show" >
+                    <input type="Text" name="username" value="" size="12" placeholder="Nutzername" />
+                    <input type="Text" name="password" value="" size="12" minlength="5" placeholder="Passwort" />
                     <input type="Submit" name="Submit" value="Login">
                 </form>
             </div>
+       
         </div>
+        
     </body>
 </html>
