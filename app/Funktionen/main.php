@@ -86,9 +86,12 @@
         mysqli_stmt_fetch($stmt1);
         mysqli_close($db);
     
-        if(password_verify($password, $pwd)){
+        if(!password_verify($password, $pwd)){
           return -1;
+          //return $nutzernummer;
         }
+
+        //return -1;
 
         return $nutzernummer;
 
@@ -116,7 +119,7 @@
             return true;
         }
 
-        $passwort_hash = password_hash($Password, PASSWORD_DEFAULT);
+        $passwort_hash = password_hash($Passwort, PASSWORD_DEFAULT);
         //printJSDebug("Creating the session");
         try{
 
